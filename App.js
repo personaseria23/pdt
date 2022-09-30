@@ -16,16 +16,18 @@ export default function App() {
   return (
     <NavigationContainer>{
       <View style={styles.container}>
-        <MapView style={styles.map}
+        {/* <MapView style={styles.map}
           initialRegion={{
           latitude: origin.latitude,
           longitude: origin.longitude,
           latitudeDelta: 0.09,
           longitudeDelta: 0.04
           }}
-        />
-      </View>
+          /> */}
+          <Text>Holi</Text> 
+      </View>  
     }</NavigationContainer>
+
   );
 }
 //comentario
