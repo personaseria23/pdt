@@ -1,71 +1,68 @@
-import { StyleSheet, Text, View, Button } from 'react-native';
-import MapView from 'react-native-maps';
-import * as React from 'react';
-import { NavigationContainer, TabActions } from '@react-navigation/native';
-import { useNavigation } from '@react-navigation/native'
-import { Ionicons } from '@expo/vector-icons';
-import Ionic from 'react-native-vector-icons/Ionicons'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as React from "react";
+import { NavigationContainer, TabActions } from "@react-navigation/native";
 
+import { Ionicons } from "@expo/vector-icons";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
-  const HomeScreen = () => {
-    const[origin, set0rigin] = React.useState({
-      latitude: -33.046225180980755,
-      longitude: -71.62489754321773
-    });
-    const styles = StyleSheet.create({
-      container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      map: {
-        width:'100%',
-        height: '100%'
-      }
-    });
-    return (
-    <>
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <MapView style={styles.map}
-          initialRegion={{
-          latitude: origin.latitude,
-          longitude: origin.longitude,
-          latitudeDelta: 0.09,
-          longitudeDelta: 0.04
-          }}
-        />
-    </View>
-    </>
-    );
-  }
+import ProfileScreen from "./pdt/screens/profile";
+import HomeScreen from "./pdt/screens/home";
+import SettingsScreen from "./pdt/screens/settings";
 
-  const SettingsScreen = () => {
-    return (
-    <>
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Settings!</Text>
-      {/* <Button title="Go to Home" onPress={() => navigation.navigate('Home')} /> */}
-    </View>
-    </>
+const App = () => {
+  // const Stack = createNativeStackNavigator();
+  // const Tab = createBottomTabNavigator();
+  const Tab = createMaterialBottomTabNavigator();
 
-    );
-  }
-
-const Tab = createBottomTabNavigator();
-
- const App = () => {
-  
   return (
-    <NavigationContainer>
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
-    </Tab.Navigator>
-  </NavigationContainer>
+    <>
+      <NavigationContainer>
+        <Tab.Navigator
+          initialRouteName="Home"
+          barStyle={{
+            backgroundColor: "black",
+            position: "absolute",
+          }}
+        >
+          <Tab.Screen
+            name="Profile"
+            component={ProfileScreen}
+            options={{
+              tabBarLabel: "Profile",
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons
+                  name="account"
+                  color={color}
+                  size={26}
+                />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{
+              tabBarLabel: "Home",
+              tabBarIcon: ({ color }) => (
+                <MaterialCommunityIcons name="home" color={color} size={24} />
+              ),
+            }}
+          />
+          <Tab.Screen
+            name="Settings"
+            component={SettingsScreen}
+            options={{
+              tabBarLabel: "Settings",
+              tabBarIcon: ({ color }) => (
+                <Ionicons name="settings" color={color} size={22} />
+              ),
+            }}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </>
   );
-}
+};
 
 export default App;
 //comentario
