@@ -16,7 +16,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ProfileScreen = () => {
 
-  const myCustomShare = async() => {
+  const myCustomShare = async() => { 
     const shareOptions = {
       message: 'Order your next meal from FoodFinder App. I\'ve already ordered more than 10 meals on it.',
       url: files.appLogo,
@@ -40,7 +40,7 @@ const ProfileScreen = () => {
             source={{
               uri: 'https://media.revistagq.com/photos/5fc0cb787e8773c13e83a61e/3:4/w_2088,h_2784,c_limit/GettyImages-1280266077.jpg',
             }}
-            size={80}
+            size={120}
           />
           <View style={{marginLeft: 20}}>
             <Title style={[styles.title, {
