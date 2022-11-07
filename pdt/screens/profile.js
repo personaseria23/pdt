@@ -80,7 +80,7 @@ const ProfileScreen = () => {
             <Text style={styles.menuItemText}>Pagos</Text>
           </View>
         </TouchableRipple>
-        <TouchableRipple onPress={myCustomShare}>
+        <TouchableRipple >
           <View style={styles.menuItem}>
             <Icon name="share-outline" color="#FF6347" size={25}/>
             <Text style={styles.menuItemText}>Compartir</Text>
