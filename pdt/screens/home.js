@@ -25,29 +25,39 @@ const HomeScreen = () => {
   });
 
   // const Stack = createNativeStackNavigator();
-  useEffect(() => {
-    (async () => {
-      let { status } = await Location.requestPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
-      }
+  // useEffect(() => {
+  //   (async () => {
+  //     let { status } = await Location.requestPermissionsAsync();
+  //     if (status !== "granted") {
+  //       setErrorMsg("Permission to access location was denied");
+  //     }
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
+  //     let location = await Location.getCurrentPositionAsync({});
+  //     setLocation(location);
 
-      setMapRegion({
-        longitude: location.coords.longitude,
-        latitude: location.coords.latitude,
-        longitudeDelta: 0.0922,
-        latitudeDelta: 0.0421,
-      });
-    })();
-  }, []);
+  //     setMapRegion({
+  //       longitude: location.coords.longitude,
+  //       latitude: location.coords.latitude,
+  //       longitudeDelta: 0.0922,
+  //       latitudeDelta: 0.0421,
+  //     });
+  //   })();
+  // }, []);
 
   return (
     <View>
-      <MapView style={styles.map} />
-      <Marker
+      <MapView 
+      initialRegion={{
+        longitude: origin.longitude,
+          latitude: origin.latitude,
+          latitudeDelta: 0.09,
+          longitudeDelta:0.04
+      }}
+      style={styles.map} 
+      
+      
+      />
+      {/* <Marker
         ccoordinate={{
           longitude: origin.longitude,
           latitude: origin.latitude,
@@ -56,7 +66,9 @@ const HomeScreen = () => {
 
         title="El Estarbocks"
         description="Esto es el Estarbocks"
-      ></Marker>
+      ></Marker> */}
+      
+      
     </View>
   );
 };
