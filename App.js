@@ -8,6 +8,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import ProfileScreen from "./pdt/screens/profile";
 import HomeScreen from "./pdt/screens/home";
 import SettingsScreen from "./pdt/screens/settings";
+import Login from "./pdt/screens/login";
 
 const App = () => {
   // const Stack = createNativeStackNavigator();
@@ -17,52 +18,14 @@ const App = () => {
   return (
     <>
       <NavigationContainer>
-        <Tab.Navigator
-          initialRouteName="Home"
-          barStyle={{
-            backgroundColor: "black",
-            position: "absolute",
-          }}
-        >
-          <Tab.Screen
-            name="Profile"
-            component={ProfileScreen}
-            options={{
-              tabBarLabel: "Profile",
-              tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons
-                  name="account"
-                  color={color}
-                  size={26}
-                />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{
-              tabBarLabel: "Home",
-              tabBarIcon: ({ color }) => (
-                <MaterialCommunityIcons name="home" color={color} size={24} />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Settings"
-            component={SettingsScreen}
-            options={{
-              tabBarLabel: "Settings",
-              tabBarIcon: ({ color }) => (
-                <Ionicons name="settings" color={color} size={22} />
-              ),
-            }}
-          />
-        </Tab.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+      </Stack.Navigator>
       </NavigationContainer>
     </>
   );
 };
 
 export default App;
-//comentario
+//
