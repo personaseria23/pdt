@@ -49,8 +49,8 @@ const HomeScreen = () => {
       <MapView style={styles.map} />
       <Marker
         ccoordinate={{
-          longitude: mapRegion.longitude,
-          latitude: mapRegion.latitude,
+          longitude: origin.longitude,
+          latitude: origin.latitude,
         }}
 
 
