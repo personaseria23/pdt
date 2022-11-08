@@ -10,7 +10,7 @@ import {
     mix,
     BackdropFilter,
     Blur,
-    useDerivedValue,
+    useComputedValue,
   } from '@shopify/react-native-skia';
   import * as React from 'react';
   import {Dimensions} from 'react-native';
@@ -21,15 +21,15 @@ import {
   
   export default function MyBlur() {
     const progress = useLoop({duration: 5000});
-    const start = useDerivedValue(
+    const start = useComputedValue(
       () => sub(c, vec(0, mix(progress.current, r, r))),
       [progress],
     );
-    const end = useDerivedValue(
+    const end = useComputedValue(
       () => add(c, vec(0, mix(progress.current, r, r / 2))),
       [progress],
     );
-    const radius = useDerivedValue(
+    const radius = useComputedValue(
       () => mix(progress.current, r, r / 2),
       [progress],
     );
