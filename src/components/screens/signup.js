@@ -19,7 +19,7 @@ import {
 } from 'react-native';
 import MyBlur from '../../components/MyBlur';
 
-const LogIn = ({navigation}) => {
+const SignUp = ({navigation}) => {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
 
@@ -33,28 +33,26 @@ const LogIn = ({navigation}) => {
 
 
 
-
-    const handleSignIn = () => {
-      signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log('Signed in!')
-        const user = userCredential.user;
-        console.log(user)
-        navigation.navigate('Home');
-      })
-      .catch(error => {
-        Alert.alert(error.message)
-        console.log(error)
-      })
-    }
+  const handleCreateAccount = () => {
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log('Account created!')
+      const user = userCredential.user;
+      console.log(user)
+    })
+    .catch(error => {
+      console.log(error)
+      Alert.alert(error.message)
+    })
+  }
   return (
     <>
       <MyBlur />
       <SafeAreaView style={styles.container}>
         <ScrollView contentContainerStyle={styles.container}>
           <View style={styles.contentContainer}>
-            <Text style={styles.title}>Hello Again!</Text>
-            <Text style={styles.body}>Welcome back you've been missed!</Text>
+            <Text style={styles.title}>Registrate</Text>
+            <Text style={styles.body}>Súmate a la experiencia Unify</Text>
 
             <TextInput
               onChangeText={(text) => setEmail(text)}
@@ -63,7 +61,7 @@ const LogIn = ({navigation}) => {
               autoCorrect={false}
             />
             <TextInput
-              onChangeText={(text) => setPassword(text)}
+              onChangeText={(text) => setPassword(text)} 
               style={styles.input}
               placeholder="Password"
               autoCorrect={false}
@@ -80,8 +78,8 @@ const LogIn = ({navigation}) => {
               </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={handleSignIn} style={styles.signInButton}>
-              <Text style={{color: 'white', fontWeight: 'bold'}}>Sign In</Text>
+            <TouchableOpacity onPress={handleCreateAccount} style={styles.signInButton}>
+              <Text style={{color: 'white', fontWeight: 'bold'}}>Registrarse</Text>
             </TouchableOpacity>
 
             <Text style={{textAlign: 'center'}}>Or continue with</Text>
@@ -123,7 +121,7 @@ const LogIn = ({navigation}) => {
   );
 };
 
-export default LogIn;
+export default SignUp;
 
 const styles = StyleSheet.create({
   container: {

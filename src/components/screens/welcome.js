@@ -38,7 +38,9 @@ const Welcome = ({navigation}) => {
               And study major
             </Text>
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.button1}>
+              <TouchableOpacity
+              onPress={() => navigation.navigate('SignUp')}
+              style={styles.button1}>
                 <Text style={styles.buttonsText}>Register</Text>
               </TouchableOpacity>
               <TouchableOpacity
